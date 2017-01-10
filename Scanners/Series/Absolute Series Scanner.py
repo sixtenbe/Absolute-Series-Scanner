@@ -91,25 +91,35 @@ CHARACTERS_MAP = {
   49835:'«' , 49842:'²' , 49843:'³' , 49844:"'" , 49847:' ' , 49848:'¸',  49851:'»' , 49853:'½', 52352:'', 52353:''}                                                    #'«' ['\xc2', '\xab'] #'·' ['\xc2', '\xb7'] #'»' ['\xc2', '\xbb']# 'R/Ranma ½ Nettou Hen'  #'¸' ['\xc2', '\xb8'] #'̀' ['\xcc', '\x80'] #  ['\xcc', '\x81'] 
 
 ### Log + LOG_PATH calculated once for all calls ###
-LOG_PATHS = { 'win32':  [ '%LOCALAPPDATA%\\Plex Media Server\\Logs',                                       # Windows Vista/7/8
-                          '%USERPROFILE%\\Local Settings\\Application Data\\Plex Media Server\\Logs' ],    # Windows XP, 2003, Home Server
-              'darwin': [ '$HOME/Library/Application Support/Plex Media Server/Logs',                      # Darwin (MacOS) 
-                           '$HOME/Library/Logs/Plex Media Server'],                                        # Darwin (MacOS) LINE_FEED = "\r"
-              'linux':  [ '$PLEX_HOME/Library/Application Support/Plex Media Server/Logs',                 # Linux
-                          '$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex Media Server/Logs',             # Slack, Ubuntu/Fedora, Synology
-                          '/share/MD0_DATA/.qpkg/PlexMediaServer/Library/Plex Media Server/Logs',          # Ubuntu/Fedora/QNAP
-                          '/volume1/Plex/Library/Application Support/Plex Media Server/Logs',              # Synology, Asustor
-                          '/volume2/Plex/Library/Application Support/Plex Media Server/Logs',              # Synology, if migrated a second raid volume as unique volume in new box         
-                          '/c/.plex/Library/Application Support/Plex Media Server/Logs',                   # ReadyNAS
-                          '/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs',   # Debian, Fedora, CentOS, Ubuntu
-                          '/usr/local/plexdata/Plex Media Server/Logs',                                    # FreeBSD
-                          '/usr/pbi/plexmediaserver-amd64/plexdata/Plex Media Server/Logs',                # FreeNAS
-                          '${JAIL_ROOT}/var/db/plexdata/Plex Media Server/Logs/',                          # FreeNAS
-                          '/share/CACHEDEV1_DATA/.qpkg/PlexMediaServer/Library/Plex Media Server/Logs',    # QNAP
-                          '/raid0/data/module/Plex/sys/Plex Media Server/Logs',                            # Thecus
-                          '/raid0/data/PLEX_CONFIG/Plex Media Server/Logs',                                # Thecus Plex community version
-                          '/config/Library/Application Support/Plex Media Server/Logs'],                   # Docker linuxserver/plex
-              'freebsd9':['/usr/local/plexdata/Plex Media Server/Logs' ] }                  
+LOG_PATHS = { 
+    'win32':  [
+        '%LOCALAPPDATA%\\Plex Media Server\\Logs',                                      # Windows Vista/7/8
+        '%USERPROFILE%\\Local Settings\\Application Data\\Plex Media Server\\Logs'      # Windows XP, 2003, Home Server
+        ],    
+    'darwin': [
+        '$HOME/Library/Application Support/Plex Media Server/Logs',                     # Darwin (MacOS) 
+        '$HOME/Library/Logs/Plex Media Server'                                          # Darwin (MacOS) LINE_FEED = "\r"
+        ],                                        
+    'linux':  [ 
+        '$PLEX_HOME/Library/Application Support/Plex Media Server/Logs',                # Linux
+        '$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex Media Server/Logs',            # Slack, Ubuntu/Fedora, Synology
+        '/share/MD0_DATA/.qpkg/PlexMediaServer/Library/Plex Media Server/Logs',         # Ubuntu/Fedora/QNAP
+        '/volume1/Plex/Library/Application Support/Plex Media Server/Logs',             # Synology, Asustor
+        '/volume2/Plex/Library/Application Support/Plex Media Server/Logs',             # Synology, if migrated a second raid volume as unique volume in new box         
+        '/c/.plex/Library/Application Support/Plex Media Server/Logs',                  # ReadyNAS
+        '/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs',  # Debian, Fedora, CentOS, Ubuntu
+        '/usr/local/plexdata/Plex Media Server/Logs',                                   # FreeBSD
+        '/usr/pbi/plexmediaserver-amd64/plexdata/Plex Media Server/Logs',               # FreeNAS
+        '${JAIL_ROOT}/var/db/plexdata/Plex Media Server/Logs/',                         # FreeNAS
+        '/share/CACHEDEV1_DATA/.qpkg/PlexMediaServer/Library/Plex Media Server/Logs',   # QNAP
+        '/raid0/data/module/Plex/sys/Plex Media Server/Logs',                           # Thecus
+        '/raid0/data/PLEX_CONFIG/Plex Media Server/Logs',                               # Thecus Plex community version
+        '/config/Library/Application Support/Plex Media Server/Logs'],                  # Docker linuxserver/plex
+    'freebsd9': [
+        '/usr/local/plexdata/Plex Media Server/Logs/Custom',
+        '/usr/local/plexdata/Plex Media Server/Logs'
+        ] 
+    }                  
 
 RootLogger,     RootHandler,     RootFormatting     = logging.getLogger('main'),           None, logging.Formatter('%(message)s') #%(asctime)-15s %(levelname)s - 
 FileListLogger, FileListHandler, FileListFormatting = logging.getLogger('FileListLogger'), None, logging.Formatter('%(message)s')
